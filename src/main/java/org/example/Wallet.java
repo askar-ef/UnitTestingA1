@@ -5,6 +5,19 @@ import java.util.ArrayList;
 public class Wallet {
 
     String owner;
+
+    public void setListKartu(ArrayList<String> listKartu) {
+        this.listKartu = listKartu;
+    }
+
+    public void setListUangKoin(ArrayList<Integer> listUangKoin) {
+        this.listUangKoin = listUangKoin;
+    }
+
+    public void setListUangLembaran(ArrayList<Integer> listUangLembaran) {
+        this.listUangLembaran = listUangLembaran;
+    }
+
     ArrayList<String> listKartu;
     ArrayList<Integer> listUangKoin;
     ArrayList<Integer> listUangLembaran;
@@ -37,7 +50,9 @@ public class Wallet {
     }
 
     public void tambahKartu(String namaKartu){
-        this.listKartu.add(namaKartu);
+        if (!listKartu.contains(namaKartu)) {
+            this.listKartu.add(namaKartu);
+        }
     }
 
     public String ambilKartu(String namaKartu){
@@ -48,10 +63,10 @@ public class Wallet {
         return null;
     }
     public void tambahUang(int jumlahUang){
-        if (jumlahUang < 0 ){
+        if (jumlahUang <= 0 ){
             throw new Error("Jumlah uang tidak boleh minus");
         }
-        if (jumlahUang > 1000) {
+        if (jumlahUang >= 1000) {
             listUangLembaran.add(jumlahUang);
         }
         else {
